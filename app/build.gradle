@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.sherchen.gankclient"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    dataBinding {
+        enabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':androidcommon')
+    implementation project(':RecyclerViewAdapterHelper')
+    implementation project(':mvp')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+
+    def dependencies = rootProject.ext.dependencies
+
+    implementation dependencies.supportDesign
+    implementation dependencies.supportRecyclerview
+    implementation dependencies.supportCardView
+    implementation dependencies.supportMultidex
+
+//
+    implementation dependencies.rxJava
+    implementation dependencies.rxAndroid
+    implementation dependencies.gson
+    implementation dependencies.retrofit
+    implementation dependencies.retrofitRxjava2Adapter
+    implementation dependencies.retrofitGsonConverter
+    implementation dependencies.okhttp3
+    implementation dependencies.okhttpLoggingInterceptor
+
+    implementation dependencies.glide
+    implementation dependencies.dagger
+    kapt dependencies.daggerCompiler
+    implementation dependencies.daggerAndroid
+    implementation dependencies.daggerAndroidSupport
+    kapt dependencies.daggerAndroidProcessor
+    compileOnly dependencies.javaxAnnotation
+
+    implementation dependencies.kotlinStdlib
+    implementation dependencies.kotlinReflect
+
+    //deep link
+    implementation 'com.airbnb:deeplinkdispatch:2.0.1'
+    kapt 'com.airbnb:deeplinkdispatch-processor:2.0.1'
+
+
+    implementation 'com.github.githubwing:ByeBurger:1.2.2'
+    kapt 'com.android.databinding:compiler:2.3.1'
+    testImplementation 'junit:junit:4.12'
+}

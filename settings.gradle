@@ -1,0 +1,13 @@
+include ':app'
+include ':androidcommon'
+project(':androidcommon').projectDir = new File('ThirdParty/AndroidCommons/androidcommon')
+include ':RecyclerViewAdapterHelper'
+project(':RecyclerViewAdapterHelper').projectDir = new File('ThirdParty/AndroidCommons/BaseRecyclerViewAdapterHelper/library')
+include ':mvp-common'
+project(':mvp-common').projectDir = new File('ThirdParty/ArchitectureTemplate/mvp-common')
+include ':presentermanager'
+project(':presentermanager').projectDir = new File('ThirdParty/ArchitectureTemplate/presentermanager')
+include ':utils-fragment'
+project(':utils-fragment').projectDir = new File('ThirdParty/ArchitectureTemplate/utils-fragment')
+include ':mvp'
+project(':mvp').projectDir = new File('ThirdParty/ArchitectureTemplate/mvp')
